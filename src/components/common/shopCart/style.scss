@@ -1,0 +1,40 @@
+.shop-cart {
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px;
+        margin-left: 54px;
+        border: 1px white solid;
+        border-radius: 1px;
+        & svg {
+                height: 22px;
+                width: 22px;
+        }
+        & b {
+                margin: 0 10px;
+                color: white;
+        }
+        & span {
+                display: block;
+                padding: 2px 5px;
+                color: black;
+                background-color: #ffba27;
+                border-radius: 3px;
+        }
+        @media (max-width: 480px) {
+                & svg {
+                        height: 42px;
+                        width: 42px;
+                }
+                & b {
+                        display: none;
+                }
+                & span {
+                        display: none;
+                }
+                padding: 0;
+                margin-left: 0;
+                border: none;
+        }
+}
