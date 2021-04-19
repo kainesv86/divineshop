@@ -74,17 +74,10 @@ const Burger: React.FunctionComponent<BurgerProps> = () => {
                                                                 </li>
                                                         );
                                                 })}
-                                                {/* <li>Trang Chủ</li>
-                                                <li>Dang mục sản phẩm</li>
-                                                <li>Hướng dẫn mua hàng</li>
-                                                <li>Liên hệ hợp tác</li>
-                                                <li>Hình thức thanh toán</li>
-                                                <li>Hỗ trợ</li>
-                                                <li>1900 633 305</li>
-                                                <li>Nhắn tin cho Shop</li> */}
                                         </ul>
                                 </div>
                         </div>
+                        <div className={`burger__black-screen ${isActive ? "burger__black-screen--active" : ""}`}></div>
                 </React.Fragment>
         );
 };

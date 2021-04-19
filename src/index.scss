@@ -3,3 +3,10 @@
         padding: 0;
         box-sizing: border-box;
 }
+body {
+        margin: 120px 232px 0 232px;
+
+        @media (max-width: 480px) {
+                margin: 80px 0 0 0;
+        }
+}
