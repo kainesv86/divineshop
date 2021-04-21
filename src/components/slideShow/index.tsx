@@ -1,4 +1,5 @@
 import * as React from "react";
+import { transform } from "typescript";
 import { ReactComponent as LeftIcon } from "../../icons/left.svg";
 import { ReactComponent as RightIcon } from "../../icons/right.svg";
 
@@ -48,8 +49,8 @@ const SlideShow: React.FunctionComponent<SlideShowProps> = () => {
         const [currentShow, setCurrentShow] = React.useState(1);
 
         React.useEffect(() => {
-                if (currentShow <= 0) setCurrentShow(contents.length - 2);
-                if (currentShow >= contents.length - 1) setCurrentShow(1);
+                if (currentShow < 1) setCurrentShow(contents.length - 2);
+                if (currentShow > contents.length - 2) setCurrentShow(1);
         }, [currentShow, setCurrentShow]);
 
         React.useEffect(() => {
@@ -65,21 +66,24 @@ const SlideShow: React.FunctionComponent<SlideShowProps> = () => {
                                 <LeftIcon />
                         </div>
                         <div className="slideshow">
-                                {contents.map((item, index) => (
-                                        <div
-                                                className={`slideshow__screen ${
-                                                        index === currentShow ? "slideshow__screen--active" : ""
-                                                }`}
-                                        >
-                                                <a href={item.link} className={`slideshow__screen__link`}>
-                                                        <img
-                                                                className="slideshow__screen__img"
-                                                                src={item.imgUrl}
-                                                                alt={item.content}
-                                                        />
-                                                </a>
-                                        </div>
-                                ))}
+                                <div
+                                        className="slideshow__screen"
+                                        style={{
+                                                transform: `translateX(${(-currentShow / contents.length) * 100}%)`,
+                                        }}
+                                >
+                                        {contents.map((item, index) => (
+                                                <div className={`slideshow__frame`}>
+                                                        <a href={item.link} className={`slideshow__frame__link`}>
+                                                                <img
+                                                                        className="slideshow__frame__img"
+                                                                        src={item.imgUrl}
+                                                                        alt={item.content}
+                                                                />
+                                                        </a>
+                                                </div>
+                                        ))}
+                                </div>
                         </div>
                         {/* <div className="slideshow__screen">
                                 <a href={contents[6].link} className="slideshow__screen__link">

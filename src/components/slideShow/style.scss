@@ -1,7 +1,8 @@
 .slideshow {
+        overflow: hidden;
         position: relative;
-        display: block;
-        width: 100%;
+        display: flex;
+        width: 375px;
         height: 224px;
         &__right-button {
                 position: absolute;
@@ -56,18 +57,18 @@
                 }
         }
         &__screen {
-                position: absolute;
+                display: flex;
+                transition: 1s;
+                width: max-content;
+        }
+
+        &__frame {
                 display: flex;
                 width: 100%;
                 height: 100%;
                 top: 0;
                 right: 0;
                 z-index: -1;
-                opacity: 0;
-                animation: fade-out 1s forwards;
-                &--active {
-                        animation: fade-in 1s forwards;
-                }
                 &__link {
                         display: block;
                         width: 100%;
@@ -78,22 +79,5 @@
                         width: 375px;
                         background-attachment: fixed;
                 }
-        }
-}
-
-@keyframes fade-out {
-        0% {
-                opacity: 1;
-        }
-        100% {
-                opacity: 0;
-        }
-}
-@keyframes fade-in {
-        0% {
-                opacity: 0;
-        }
-        100% {
-                opacity: 1;
         }
 }
