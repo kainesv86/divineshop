@@ -1,5 +1,4 @@
 import * as React from "react";
-import { transform } from "typescript";
 import { ReactComponent as LeftIcon } from "../../icons/left.svg";
 import { ReactComponent as RightIcon } from "../../icons/right.svg";
 
@@ -60,18 +59,22 @@ const SlideShow: React.FunctionComponent<SlideShowProps> = () => {
                 return () => clearInterval(interval);
         });
 
+        const Swinger = React.useMemo(() => {
+                console.log(currentShow);
+                const style = {
+                        transform: `translateX(${(-currentShow / contents.length) * 100}%)`,
+                        transition: currentShow < 1 || currentShow > contents.length - 1 ? "0s" : "1s",
+                };
+                return style;
+        }, [currentShow]);
+
         return (
                 <div className="slideshow">
                         <div className="slideshow__left-button" onClick={() => setCurrentShow(currentShow - 1)}>
                                 <LeftIcon />
                         </div>
                         <div className="slideshow">
-                                <div
-                                        className="slideshow__screen"
-                                        style={{
-                                                transform: `translateX(${(-currentShow / contents.length) * 100}%)`,
-                                        }}
-                                >
+                                <div className="slideshow__screen" style={Swinger}>
                                         {contents.map((item, index) => (
                                                 <div className={`slideshow__frame`}>
                                                         <a href={item.link} className={`slideshow__frame__link`}>
