@@ -60,7 +60,6 @@ const SlideShow: React.FunctionComponent<SlideShowProps> = () => {
         });
 
         const Swinger = React.useMemo(() => {
-                console.log(currentShow);
                 const style = {
                         transform: `translateX(${(-currentShow / contents.length) * 100}%)`,
                         transition: currentShow < 1 || currentShow > contents.length - 1 ? "0s" : "1s",
@@ -76,7 +75,7 @@ const SlideShow: React.FunctionComponent<SlideShowProps> = () => {
                         <div className="slideshow">
                                 <div className="slideshow__screen" style={Swinger}>
                                         {contents.map((item, index) => (
-                                                <div className={`slideshow__frame`}>
+                                                <div className={`slideshow__frame`} key={index}>
                                                         <a href={item.link} className={`slideshow__frame__link`}>
                                                                 <img
                                                                         className="slideshow__frame__img"
@@ -88,42 +87,6 @@ const SlideShow: React.FunctionComponent<SlideShowProps> = () => {
                                         ))}
                                 </div>
                         </div>
-                        {/* <div className="slideshow__screen">
-                                <a href={contents[6].link} className="slideshow__screen__link">
-                                        <img
-                                                className="slideshow__screen__img"
-                                                src={contents[6].imgUrl}
-                                                alt={contents[6].content}
-                                        />
-                                </a>
-                                {contents.map((item, index) => (
-                                        <a
-                                                href={item.link}
-                                                className={`slideshow__screen__link ${
-                                                        index === currentShow ? `slideshow__screen__link--active` : ""
-                                                }`}
-                                        >
-                                                <img
-                                                        className="slideshow__screen__img"
-                                                        src={item.imgUrl}
-                                                        alt={item.content}
-                                                />
-                                        </a>
-                                ))}
-                                <a href={contents[0].link} className="slideshow__screen__link">
-                                        <img
-                                                className="slideshow__screen__img"
-                                                src={contents[0].imgUrl}
-                                                alt={contents[0].content}
-                                        />
-                                </a>
-                        </div> */}
-                        {/* <a
-                                href={contents[currentShow] ? contents[currentShow].link : null}
-                                className="slideshow__screen"
-                        >
-                                <img src={contents[currentShow] ? contents[currentShow].imgUrl : null} alt="" />
-                        </a> */}
                         <div className="slideshow__dots">
                                 {contents.map((item, index) => (
                                         <span

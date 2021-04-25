@@ -6,7 +6,14 @@ export interface HomeProps {}
 const Home: React.FunctionComponent<HomeProps> = () => {
         return (
                 <React.Fragment>
-                        <SlideShow />
+                        <div className="catalog">
+                                <div>
+                                        <SlideShow />
+                                        <div>
+                                                <a href="./"></a>
+                                        </div>
+                                </div>
+                        </div>
                 </React.Fragment>
         );
 };

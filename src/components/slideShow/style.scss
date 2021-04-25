@@ -2,8 +2,12 @@
         overflow: hidden;
         position: relative;
         display: flex;
-        width: 375px;
-        height: 224px;
+        @media (max-width: 480px) {
+                width: 375px;
+                height: 224px;
+        }
+        height: 324px;
+        width: 550px;
         &__right-button {
                 position: absolute;
                 transform: translateY(-10px);
@@ -58,7 +62,6 @@
         }
         &__screen {
                 display: flex;
-                // transition: 1s;
                 width: max-content;
         }
 
@@ -75,8 +78,12 @@
                         height: 100%;
                 }
                 &__img {
-                        height: 224px;
-                        width: 375px;
+                        @media (max-width: 480px) {
+                                height: 224px;
+                                width: 375px;
+                        }
+                        height: 324px;
+                        width: 550px;
                         background-attachment: fixed;
                 }
         }
